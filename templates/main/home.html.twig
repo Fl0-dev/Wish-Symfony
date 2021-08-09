@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{parent()}} | Accueil{% endblock %}
+
+{% block body %}
+    <h2>Accueil</h2>
+    <section>
+        {% for categorie in categories %}
+        <div class="list-group">
+
+            <ul class="list-group">{{ categorie.name}}
+
+            {% for wish in categorie.getWishes() %}
+                <li class="list-group-item">{{ wish.title }}</li>
+            {% endfor %}
+            </ul>
+        {% endfor %}
+
+        </div>
+    </section>
+{% endblock %}
