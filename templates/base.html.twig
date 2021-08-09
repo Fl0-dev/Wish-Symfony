@@ -42,6 +42,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{path('app_logout')}}">Deconnexion ({{ app.user.pseudo }})</a>
             </li>
+                {% if is_granted("ROLE_ADMIN") %}
+                    <a class="nav-link" href="{{path('admin_dashboard')}}">Admin</a>
+                {% endif %}
             {% else %}
             <li class="nav-item">
                 <a class="nav-link" href="{{path('app_register')}}">Nouveau Compte</a>
