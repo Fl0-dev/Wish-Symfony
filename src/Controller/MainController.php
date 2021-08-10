@@ -20,7 +20,7 @@ class MainController extends AbstractController
 
 
         return $this->render('main/home.html.twig',[
-            'categories'=> $categoryRepository->findAll()
+            'categories'=> $categoryRepository->findByCath()
         ]);
     }
 
