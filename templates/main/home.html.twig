@@ -11,7 +11,7 @@
             <ul class="list-group">{{ categorie.name}}
 
             {% for wish in categorie.getWishes() %}
-                <li class="list-group-item">{{ wish.title }}</li>
+                <li class="list-group-item">{{ wish.title }} | {{ wish.user.pseudo }}</li>
             {% endfor %}
             </ul>
         {% endfor %}

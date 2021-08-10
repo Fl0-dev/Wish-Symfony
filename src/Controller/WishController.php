@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use App\Entity\Wish;
 use App\Form\WishType;
+use App\Repository\UserRepository;
 use App\Repository\WishRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -57,7 +59,7 @@ class WishController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('wish_liste', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('wish_list', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('wish/edit.html.twig', [
@@ -107,4 +109,17 @@ class WishController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route ("/{id}/listByUser", name="listByUser")
+     */
+    public function listByUser(User $user,UserRepository $userRepository):Response
+    {
+            $user = $userRepository->find($user);
+        if (!$user) {
+            throw $this->createNotFoundException("Cet(te) auteur(e) n'existe pas");
+        }
+        return $this->render('wish/listByUser.html.twig', [
+            "user" => $user,
+        ]);
+    }
 }

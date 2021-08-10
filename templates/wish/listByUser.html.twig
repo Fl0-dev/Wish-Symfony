@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{parent()}} | Liste des souhaits
+{% endblock %}
+
+{% block body %}
+    <h1>Liste des souhaits de {{ user.pseudo }}</h1>
+    {% for wish in user.wishes %}
+        <h4>{{ wish.title }}</h4>
+        <p>{{ wish.description }}</p>
+    {% endfor %}
+{% endblock %}
+

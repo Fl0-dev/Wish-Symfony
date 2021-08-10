@@ -11,7 +11,8 @@
     <h6 class="card-subtitle mb-2 text-muted">{{wish.dateCreated|date("d/m/Y")}}</h6>
     <h6 class="card-subtitle mb-2 text-muted">Catégorie : {{wish.category.name}}</h6>
     <p class="card-text">{{wish.description}}</p>
-    <a href="{{path('wish_list')}}" class="btn">Retour</a>
+      <a href="{{path('wish_list')}}" class="btn">Retour</a>
+    <a href="{{path('wish_listByUser',{id:wish.user.id}) }}" class="btn">{{ wish.user.pseudo }}</a>
   </div>
 </div>
     
