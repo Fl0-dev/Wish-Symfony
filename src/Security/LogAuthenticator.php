@@ -72,7 +72,16 @@ class LogAuthenticator extends AbstractFormLoginAuthenticator implements Passwor
         if (!$user) {
             throw new UsernameNotFoundException('Email could not be found.');
         }
-
+        /*
+         if (!$user) {
+        if (!$this->csrfTokenManager->isTokenValid($token)) {
+            throw new InvalidCsrfTokenException();
+        }
+        $user = $this->entityManager->getRepository(User::class)->findOneBy(['pseudo' => $credentials['pseudo']]);
+        }else{
+         throw new UsernameNotFoundException('Email could not be found.');
+        }
+          */
         return $user;
     }
 
